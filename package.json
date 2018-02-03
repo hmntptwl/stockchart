@@ -1,0 +1,17 @@
+{
+  "name": "stockchart",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "mongoose": "^5.0.3",
+    "node-fetch": "^1.7.1",
+    "serve-favicon": "~2.4.5"
+  }
+}
