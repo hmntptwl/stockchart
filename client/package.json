@@ -3,11 +3,12 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.1.0"
+    "react-linechart": "^1.1.12",
+    "react-scripts": "1.1.0",
+    "semantic-ui-react": "^0.77.2"
   },
   "scripts": {
     "start": "react-scripts start",

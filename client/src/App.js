@@ -1,21 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import LineChart from 'react-linechart';
+import '../node_modules/react-linechart/dist/styles.css';
 import './App.css';
+import { getStockList } from './assets/client'
+import { StockItem, AddStock } from './components/index'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+export default class App extends Component {
+    render() {
+
+        function log(){
+          return '<h1>Hello World !</h1>';
+        }
+        const data = [
+            {
+                color: "steelblue",
+                points: [{x: '22-01-2016', y: 0}, {x: '22-02-2016', y: 5}, {x: '22-03-2016', y: 3}],
+            },
+
+        ];
+        return (
+            <div className="App-root">
+                <div className="App">
+                    <h1>My First LineChart</h1>
+                    <LineChart
+                        width={1200}
+                        height={400}
+                        data={data}
+                        hidePoints={false}
+                        onPointHover={log}
+                        isDate={true}
+                    />
+                </div>
+                <StockItem/>
+                <AddStock/>
+            </div>
+        );
+    }
 }
-
-export default App;

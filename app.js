@@ -4,9 +4,7 @@ var favicon = require('serve-favicon');
 var fetch = require('node-fetch');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/stockchat');
 
 
 var app = express();
@@ -22,15 +20,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 const baseApiPath = 'https://www.alphavantage.co/query?';
-const apiKey = process.env.APIKEY;
+const apiKey = '7S0L7VBKJELOMP5M';
 
 
 app.post('/stocks' , (req,res) => {
   let {type,symbol} = req.body;
   let url = `${baseApiPath}function=${type}&symbol=${symbol}&apikey=${apiKey}&outputsize=compact`
   fetch(url ,{
-  }).then(data => data.json())
-})
+  }).then(stocks => stocks.json())
+    .then(data => res.json(data))
+});
 
 
 // catch 404 and forward to error handler
