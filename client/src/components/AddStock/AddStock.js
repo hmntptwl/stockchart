@@ -5,13 +5,10 @@ export const AddStock = () => (
   <Card>
     <Card.Content>
       <Card.Header>
-        Steve Sanders
+        Enter the Stock Code
       </Card.Header>
-      <Card.Meta>
-        Friends of Elliot
-      </Card.Meta>
       <Card.Description>
-        Steve wants to add you to the group <strong>best friends</strong>
+        Add any number of stocks for comparison between them.
       </Card.Description>
       <Input action='Code' placeholder='Code...' />
     </Card.Content>

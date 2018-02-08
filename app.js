@@ -24,8 +24,9 @@ const apiKey = '7S0L7VBKJELOMP5M';
 
 
 app.post('/stocks' , (req,res) => {
-  let {type,symbol} = req.body;
-  let url = `${baseApiPath}function=${type}&symbol=${symbol}&apikey=${apiKey}&outputsize=compact`
+  let {stock} = req.body;
+  console.log(req.body)
+  let url = `${baseApiPath}function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}&apikey=${apiKey}&outputsize=compact`
   fetch(url ,{
   }).then(stocks => stocks.json())
     .then(data => res.json(data))
@@ -50,8 +51,6 @@ if(app.get('env') === 'development') {
     });
   });
 }
-
-
 
 
 var port = process.env.PORT || '3001';

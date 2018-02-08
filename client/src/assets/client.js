@@ -1,10 +1,10 @@
-export const getStockList = (type,symbol) => (
+export const getPollList = (stock) => (
   fetch('/stocks', {
-    method:'post',
-    body:JSON.stringify({type,symbol}),
+    method : 'post',
+    body: JSON.stringify({stock : stock}),
     headers:{
-      'Accept':'application/json',
+      'Accept' : 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(data => data.json())
+  }).then(res=> res.json())
 )

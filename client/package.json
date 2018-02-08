@@ -1,15 +1,17 @@
 {
-  "name": "stockchart",
-  "private": true,
-  "proxy": "http://localhost:3001/",
+  "name": "client",
   "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "highcharts": "^6.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-linechart": "^1.1.12",
+    "react-highcharts": "^16.0.2",
+    "react-highlight": "^0.10.0",
     "react-scripts": "1.1.0",
-    "semantic-ui-react": "^0.77.2"
+    "semantic-ui-react": "^0.78.1"
   },
+  "proxy":"http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
