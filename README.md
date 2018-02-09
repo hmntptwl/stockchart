@@ -12,7 +12,7 @@ So far, It satisfies the following user stories:
 ### Tech Used: 
 I have used MERN stack for this project.Initially I tried to implement a custom graph using d3.js , but it turned out to be too time consuming , as it also needed to be hooked up with react. After searching for possible options, [react-highcharts](https://www.npmjs.com/package/react-highcharts) turned out to be a fair option. Currently this project uses the same.
 
-For getting stocks, I used API from [Alpha Advantage].(https://www.alphavantage.co/documentation/)
+For getting stocks, I used API from [Alpha Advantage](https://www.alphavantage.co/documentation)
 
 ###  Running on local Machine
  `  git clone https://github.com/hemant1612/stockchart `
