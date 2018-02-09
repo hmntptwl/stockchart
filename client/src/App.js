@@ -5,8 +5,11 @@ import {StockItem, AddStock} from './components/index';
 import {getPollList, getStockData} from './assets/client';
 import {getItemFromLocalStorage, formatData} from './assets/helper';
 import {config} from './config';
+import './App.css';
+
 var ReactHighstock = require('react-highcharts/ReactHighstock.src');
 var Highlight = require('react-highlight');
+
 
 class App extends Component {
   constructor(props) {
@@ -56,11 +59,15 @@ class App extends Component {
     }
  }
 
+
  onRemoveStock(stockCode){
    let stocks = getItemFromLocalStorage();
    let index = stocks.indexOf(stockCode);
+
    stocks.splice(index,1);
    localStorage.setItem("stocks", JSON.stringify(stocks));
+   console.log(stocks)
+   this.setState({stockcache : stocks})
    let indexInSeries = -1;
    this.state.series.forEach((v,i) => {
     if(v.name === stockCode)
@@ -71,7 +78,7 @@ class App extends Component {
    let { series }= this.state;
    series.splice(indexInSeries,1);
    config["series"] = series;
-   this.setState({ config, stockcache : stocks });
+   this.setState({ config});
  }
 
   render() {

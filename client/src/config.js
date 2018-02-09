@@ -3,11 +3,11 @@ export var config = {
     selected: 1
   },
   title: {
-    text: 'Stock Prices'
+    text: 'stockchart'
   },
   series: [{
     name: '',
-    data: [],
+    data: [[+ new Date,0]],
     tooltip: {
       valueDecimals: 2
     }

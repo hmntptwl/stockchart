@@ -1,4 +1,14 @@
 .addcard-root{
   float:left;
-  margin-left: 12px;
+  margin-left: 15px;
+  margin-top : 10px;
+}
+
+input {
+  width : 225px;
+}
+
+input,button {
+  height: 48px;
+  font-size : 15px;
 }

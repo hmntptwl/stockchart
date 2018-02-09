@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image, Input } from 'semantic-ui-react'
+import { Button, Input } from 'semantic-ui-react'
 import { getItemFromLocalStorage,validateStock } from '../../assets/helper'
 import './AddStock.css'
 
@@ -43,21 +43,10 @@ export class AddStock extends React.Component {
   render(){
     return (
       <div className="addcard-root">
-        <Card>
-          <Card.Content>
-            <Card.Header>
-              Enter the Stock Code
-            </Card.Header>
-            <Card.Description>
-              Note: stockcode should be valid.
-            </Card.Description>
-            <div>
-              <Input onChange={this.handleInputChange.bind(this)} placeholder='Code' value={this.state.stockCodeToCheck}
-              />
-              <Button content='Add' onClick={this.handleClick.bind(this)} loading={this.state.loading}/>
-            </div>
-          </Card.Content>
-        </Card>
+          <Input onChange={this.handleInputChange.bind(this)} placeholder='Stock Code'
+            value={this.state.stockCodeToCheck}
+          />
+          <Button content='Add' onClick={this.handleClick.bind(this)} loading={this.state.loading}/>
     </div>
     )
   }

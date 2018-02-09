@@ -16,13 +16,10 @@ export class StockItem extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     let chunks = [];
-    console.log(nextProps)
     nextProps["stocks"].forEach((v) => {
       chunks.push (
         {
           header : v,
-          description: 'Bring to the table win-win survival strategies to ensure proactive domination.',
-          meta: 'ROI: 34%',
         }
       );
     })
@@ -30,11 +27,9 @@ export class StockItem extends React.Component {
   }
 
   handleIconClick(e){
+    e.preventDefault();
     let array = this.state.items;
-    let stockCode = e.target.code;
-    // let index = array.indexOf(stockCode);
-    // array.splice(index, 1);
-    // this.setState({items: array });
+    let stockCode = e.target.getAttribute('code');
     this.props.onRemoveStock(stockCode);
   }
 
@@ -46,10 +41,8 @@ export class StockItem extends React.Component {
            this.state.items.map((v,i) => (
             <Card key={i}>
                <Card.Content>
-                 <Icon  code={v} link name='remove' onClick={this.handleIconClick.bind(this) } />
+                 <Icon  code={v["header"]} link name='remove' onClick={this.handleIconClick.bind(this) } />
                  <Card.Header content={v["header"]} />
-                 <Card.Meta content='Musicians' />
-                 <Card.Description content='Jake is a drummer living in New York.' />
                </Card.Content>
              </Card>
           ))

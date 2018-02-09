@@ -20,12 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 const baseApiPath = 'https://www.alphavantage.co/query?';
-const apiKey = '7S0L7VBKJELOMP5M';
+const apiKey = 'your api key here';
 
 
 app.post('/stocks' , (req,res) => {
   let {stock} = req.body;
-  console.log(req.body)
   let url = `${baseApiPath}function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}&apikey=${apiKey}`
   fetch(url ,{
   }).then(stocks => stocks.json())
