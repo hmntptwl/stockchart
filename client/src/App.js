@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {StockItem, AddStock} from './components/index';
 import {getPollList, getStockData} from './assets/client';
-import {setItemInLocalStorageInitially, getItemFromLocalStorage, formatData} from './assets/helper';
+import {getItemFromLocalStorage, formatData} from './assets/helper';
 import {config} from './config';
 var ReactHighstock = require('react-highcharts/ReactHighstock.src');
 var Highlight = require('react-highlight');
@@ -38,32 +38,35 @@ class App extends Component {
 
   onAddStock(stockCode) {
     let stocks = getItemFromLocalStorage();
-    stocks.push(stockCode);
-    localStorage.setItem("stocks", JSON.stringify(stocks));
-    this.setState({stockcache: stocks});
-    getStockData(stockCode).then(data => {
-      this.state.series.push({
-        name: data["Meta Data"]["2. Symbol"],
-        data: formatData(data["Time Series (Daily)"]),
-        tooltip: {
-          valueDecimals: 2
-        }
-      })
-      config["series"] = this.state.series;
-      this.setState(config);
-   })
+    if(stocks.indexOf(stockCode) === -1){
+      stocks.push(stockCode);
+      localStorage.setItem("stocks", JSON.stringify(stocks));
+      this.setState({stockcache: stocks});
+      getStockData(stockCode).then(data => {
+        this.state.series.push({
+          name: data["Meta Data"]["2. Symbol"],
+          data: formatData(data["Time Series (Daily)"]),
+          tooltip: {
+            valueDecimals: 2
+          }
+        })
+        config["series"] = this.state.series;
+        this.setState(config);
+     })
+    }
  }
 
   render() {
     //get stocks from localStorage
     let localStockCache = getItemFromLocalStorage();
-    return (<div className="App">
-      <ReactHighstock config={config}/>
-      <StockItem stocks={this.state.stockcache}/>
-      <AddStock onAddStock={this.onAddStock.bind(this)}/>
-    </div>);
+    return (
+      <div className="App">
+        <ReactHighstock config={config}/>
+        <StockItem stocks={this.state.stockcache}/>
+        <AddStock onAddStock={this.onAddStock.bind(this)}/>
+      </div>
+    );
   }
 }
 
-setItemInLocalStorageInitially();
 export default App;
