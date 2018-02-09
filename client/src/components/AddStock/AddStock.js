@@ -15,11 +15,11 @@ export class AddStock extends React.Component {
   }
 
   handleInputChange = (e) => {
-   let upperCaseValue = e.target.value.toUpperCase();
-   e.target.value = upperCaseValue;
-   this.setState({
-     stockCodeToCheck : upperCaseValue
-   })
+     let upperCaseValue = e.target.value.toUpperCase();
+     e.target.value = upperCaseValue;
+     this.setState({
+       stockCodeToCheck : upperCaseValue
+     })
   }
 
   componentWillReceiveProps(nextProps) {

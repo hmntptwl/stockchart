@@ -26,7 +26,7 @@ const apiKey = '7S0L7VBKJELOMP5M';
 app.post('/stocks' , (req,res) => {
   let {stock} = req.body;
   console.log(req.body)
-  let url = `${baseApiPath}function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}&apikey=${apiKey}&outputsize=compact`
+  let url = `${baseApiPath}function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}&apikey=${apiKey}`
   fetch(url ,{
   }).then(stocks => stocks.json())
     .then(data => res.json(data))

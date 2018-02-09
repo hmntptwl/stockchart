@@ -56,14 +56,39 @@ class App extends Component {
     }
  }
 
+ onRemoveStock(stockCode){
+   let stocks = getItemFromLocalStorage();
+   let index = stocks.indexOf(stockCode);
+   stocks.splice(index,1);
+   localStorage.setItem("stocks", JSON.stringify(stocks));
+   let indexInSeries = -1;
+   this.state.series.forEach((v,i) => {
+    if(v.name === stockCode)
+     {
+       indexInSeries = i;
+     }
+   })
+   let { series }= this.state;
+   series.splice(indexInSeries,1);
+   config["series"] = series;
+   this.setState({ config, stockcache : stocks });
+ }
+
   render() {
     //get stocks from localStorage
     let localStockCache = getItemFromLocalStorage();
     return (
       <div className="App">
-        <ReactHighstock config={config}/>
-        <StockItem stocks={this.state.stockcache}/>
-        <AddStock onAddStock={this.onAddStock.bind(this)}/>
+        <ReactHighstock
+          config={config}
+        />
+        <StockItem
+          stocks={this.state.stockcache}
+          onRemoveStock = {this.onRemoveStock.bind(this)}
+        />
+        <AddStock
+          onAddStock={this.onAddStock.bind(this)}
+        />
       </div>
     );
   }
