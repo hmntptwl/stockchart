@@ -9,7 +9,8 @@ export class AddStock extends React.Component {
     super(props);
     this.state = {
       isValidStock : false,
-      stockCodeToCheck : ''
+      stockCodeToCheck : '',
+      loading : false,
     }
   }
 
@@ -21,14 +22,21 @@ export class AddStock extends React.Component {
    })
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      loading : false
+    })
+  }
+
   handleClick = () => {
-    this.setState({stockCodeToCheck : ''});
+    this.setState({stockCodeToCheck : '', loading : true});
     let { stockCodeToCheck } = this.state;
     validateStock(stockCodeToCheck).then(res => {
      if(res === 'success') {
        //so that stockcache can be assigned new value;
        this.props.onAddStock(stockCodeToCheck);
      }
+     this.setState({ loading : false })
    })
   }
 
@@ -44,8 +52,9 @@ export class AddStock extends React.Component {
               Note: stockcode should be valid.
             </Card.Description>
             <div>
-              <Input onChange={this.handleInputChange.bind(this)} placeholder='Code' value={this.state.stockCodeToCheck}/>
-              <Button content='Add' onClick={this.handleClick.bind(this)} />
+              <Input onChange={this.handleInputChange.bind(this)} placeholder='Code' value={this.state.stockCodeToCheck}
+              />
+              <Button content='Add' onClick={this.handleClick.bind(this)} loading={this.state.loading}/>
             </div>
           </Card.Content>
         </Card>
