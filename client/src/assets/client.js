@@ -1,4 +1,4 @@
-export const getPollList = (stock) => (
+export const getStockData = (stock) => (
   fetch('/stocks', {
     method : 'post',
     body: JSON.stringify({stock : stock}),
@@ -6,5 +6,5 @@ export const getPollList = (stock) => (
       'Accept' : 'application/json',
       'Content-Type': 'application/json'
     }
-  }).then(res=> res.json())
+  }).then(res => res.json())
 )
