@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 const baseApiPath = 'https://www.alphavantage.co/query?';
-const apiKey = '';
+const apiKey = '7S0L7VBKJELOMP5M';
 
 
 app.post('/stocks' , (req,res) => {
