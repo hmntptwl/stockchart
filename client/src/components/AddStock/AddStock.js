@@ -43,10 +43,12 @@ export class AddStock extends React.Component {
   render(){
     return (
       <div className="addcard-root">
+        <div>
           <Input onChange={this.handleInputChange.bind(this)} placeholder='Stock Code'
             value={this.state.stockCodeToCheck}
           />
           <Button content='Add' onClick={this.handleClick.bind(this)} loading={this.state.loading}/>
+        </div>
     </div>
     )
   }

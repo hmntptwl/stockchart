@@ -1,12 +1,11 @@
 .stockItem-root {
-  float:left;
-  margin-left : 15px;
-  margin-top: 10px;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
+  align-content:center;
 }
 .card{
-  display: inline;
   text-align: center;
-  float: left;
 }
 
 .icon {
